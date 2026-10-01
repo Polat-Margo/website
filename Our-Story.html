@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Our Eternal Story — A Journey of Love</title>
+
+  <!-- Google Fonts for High-End Romantic Luxury Aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons for UI icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            luxury: {
+              cream: '#FDFBF7',
+              ivory: '#FAF6EE',
+              blush: '#F8EAEB',
+              rose: '#E8A598',
+              wine: '#6E2A35',
+              deepWine: '#44141E',
+              gold: '#C5A059',
+              lightGold: '#E6CA85',
+              darkGold: '#9A7836',
+              muted: '#7A6B69'
+            }
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            script: ['"Great Vibes"', 'cursive'],
+            cormorant: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Montserrat"', 'sans-serif']
+          },
+          boxShadow: {
+            'polaroid': '0 12px 28px -4px rgba(70, 30, 35, 0.12), 0 4px 10px -2px rgba(70, 30, 35, 0.06)',
+            'polaroid-hover': '0 24px 38px -4px rgba(70, 30, 35, 0.2), 0 8px 16px -2px rgba(70, 30, 35, 0.08)',
+            'gold-glow': '0 0 25px rgba(197, 160, 89, 0.35)',
+            'soft-card': '0 15px 35px -5px rgba(110, 42, 53, 0.07)'
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Custom Luxury Styling & Animations */
+    body {
+      background-color: #FDFBF7;
+      color: #44141E;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Ambient Floating Hearts Canvas */
+    #hearts-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 15;
+    }
+
+    /* Polaroid Mask and Pin Tape Style */
+    .polaroid-card {
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+    }
+    .polaroid-card:hover {
+      transform: translateY(-8px) scale(1.025) rotate(0deg) !important;
+      z-index: 20;
+    }
+    .polaroid-card::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 22px;
+      background: rgba(230, 202, 133, 0.55);
+      border-radius: 2px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      z-index: 2;
+      backdrop-filter: blur(1px);
+    }
+
+    /* Subtle Glassmorphism */
+    .glass-card {
+      background: rgba(255, 253, 249, 0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(197, 160, 89, 0.22);
+    }
+
+    /* Gold Gradient Elements */
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #A88434 0%, #C5A059 40%, #E6CA85 70%, #A88434 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gold-border {
+      border-color: rgba(197, 160, 89, 0.4);
+    }
+
+    /* Error Shake Animation */
+    @keyframes subtleShake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-9px); }
+      40%, 80% { transform: translateX(9px); }
+    }
+    .shake-animation {
+      animation: subtleShake 0.45s ease-in-out;
+    }
+
+    /* Music Player Pulse Animation */
+    @keyframes musicPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(197, 160, 89, 0.3); }
+      50% { transform: scale(1.06); box-shadow: 0 0 25px rgba(197, 160, 89, 0.6); }
+    }
+    .music-playing {
+      animation: musicPulse 2.8s infinite ease-in-out;
+    }
+
+    /* Typewriter Cursor */
+    .typewriter-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      background-color: #C5A059;
+      margin-left: 3px;
+      vertical-align: middle;
+      animation: blink 0.8s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body class="relative selection:bg-luxury-rose selection:text-luxury-deepWine">
+
+  <!-- Floating Hearts Background Canvas -->
+  <canvas id="hearts-canvas"></canvas>
+
+  <!-- Lock Screen Modal Overlay -->
+  <div id="lock-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-[#FAF6EE] px-4 transition-all duration-1000">
+    <!-- Ambient Ornamental Circles -->
+    <div class="absolute w-96 h-96 rounded-full bg-luxury-blush/60 blur-3xl -top-20 -left-20 pointer-events-none"></div>
+    <div class="absolute w-96 h-96 rounded-full bg-luxury-rose/30 blur-3xl -bottom-20 -right-20 pointer-events-none"></div>
+
+    <div class="relative w-full max-w-md p-8 md:p-10 rounded-3xl glass-card shadow-2xl text-center border gold-border">
+      <!-- Heart Icon Accent -->
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-luxury-blush mb-6 shadow-sm border border-luxury-rose/40 text-luxury-wine">
+        <i class="fa-solid fa-calendar-heart text-xl text-luxury-gold"></i>
+      </div>
+
+      <span class="block font-script text-3xl text-luxury-gold tracking-wide mb-1">Welcome My Love</span>
+      <h1 class="font-serif text-2xl md:text-3xl font-semibold text-luxury-deepWine mb-3">Our Sacred Chapter</h1>
+      <p class="text-xs md:text-sm text-luxury-muted font-light leading-relaxed mb-6">
+        Enter a special date that means something to you.
+      </p>
+
+      <!-- Input Form -->
+      <form id="passcode-form" class="space-y-4" onsubmit="event.preventDefault(); handleUnlock();">
+        <div class="relative">
+          <input 
+            type="text" 
+            id="passcode-input" 
+            autocomplete="off"
+            placeholder="YYYY-MM-DD or DD/MM/YYYY" 
+            class="w-full px-5 py-3.5 rounded-2xl bg-white/90 border border-luxury-gold/30 text-center text-luxury-deepWine placeholder:text-luxury-muted/50 placeholder:font-light focus:outline-none focus:ring-2 focus:ring-luxury-gold/50 focus:border-luxury-gold transition duration-300 shadow-inner text-sm tracking-wider"
+          />
+        </div>
+
+        <button 
+          type="submit" 
+          id="unlock-btn"
+          class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-luxury-wine via-luxury-deepWine to-luxury-wine text-luxury-ivory font-medium text-sm tracking-widest uppercase hover:brightness-110 active:scale-[0.98] transition-all duration-300 shadow-md hover:shadow-gold-glow flex items-center justify-center gap-2 group">
+          <span>Unlock Our Memories</span>
+          <i class="fa-solid fa-arrow-right text-xs text-luxury-lightGold group-hover:translate-x-1 transition-transform"></i>
+        </button>
+
+        <p id="error-message" class="text-xs text-rose-700 opacity-0 transition-opacity duration-300 font-medium">
+          Enter the date we got together.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Floating Ambient Music Button -->
+  <div class="fixed bottom-6 right-6 z-40">
+    <button 
+      id="music-toggle" 
+      aria-label="Toggle ambient music"
+      class="group relative flex items-center justify-center w-14 h-14 rounded-full bg-white/90 glass-card shadow-xl border gold-border text-luxury-deepWine hover:scale-105 active:scale-95 transition duration-300">
+      <span class="sr-only">Toggle Music</span>
+      <i id="music-icon" class="fa-solid fa-music text-luxury-gold text-lg transition-transform group-hover:rotate-12"></i>
+      <!-- Floating Tooltip -->
+      <span class="absolute right-16 px-3 py-1.5 rounded-xl bg-luxury-deepWine text-luxury-ivory text-xs font-light whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-md">
+        Play Romantic Melody
+      </span>
+    </button>
+  </div>
+
+  <!-- Background Music Audio Element -->
+  <audio id="bg-audio" loop preload="auto">
+    <source id="bg-audio-source" src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Main Application Content (Locked initially until passcode verified) -->
+  <div id="main-content" class="min-h-screen flex flex-col justify-between opacity-0 transition-opacity duration-1000 pointer-events-none">
+    
+    <!-- HERO SECTION -->
+    <header class="relative overflow-hidden pt-20 pb-16 md:pt-28 md:pb-20 px-4 sm:px-6 lg:px-8 text-center">
+      <!-- Decorative Background Blooms -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[850px] h-[550px] bg-gradient-to-b from-luxury-blush/50 via-luxury-cream/30 to-transparent blur-3xl -z-10 pointer-events-none"></div>
+
+      <div class="max-w-4xl mx-auto space-y-7">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-luxury-blush/80 border border-luxury-rose/50 text-luxury-wine text-xs uppercase tracking-widest font-medium shadow-sm">
+          <i class="fa-solid fa-sparkles text-luxury-gold text-[10px]"></i>
+          <span>Our Eternal Story</span>
+          <i class="fa-solid fa-sparkles text-luxury-gold text-[10px]"></i>
+        </div>
+
+        <h1 class="font-serif text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-luxury-deepWine">
+          Forever & Always, <br/>
+          <span class="font-script font-normal text-5xl sm:text-6xl md:text-8xl gold-gradient-text block mt-3">
+            You & Me
+          </span>
+        </h1>
+
+        <p class="max-w-xl mx-auto text-sm sm:text-base text-luxury-muted font-light leading-relaxed">
+          Every second with you is a moment engraved in eternity. Here is the celebration of every smile, every touch, and our endless adventure.
+        </p>
+
+        <!-- Elegant Decorative Divider -->
+        <div class="flex items-center justify-center gap-3 pt-4 text-luxury-gold/60">
+          <span class="w-16 h-px bg-gradient-to-r from-transparent to-luxury-gold/40"></span>
+          <i class="fa-solid fa-heart text-luxury-rose text-xs"></i>
+          <span class="w-16 h-px bg-gradient-to-l from-transparent to-luxury-gold/40"></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- LOVE COUNTER SECTION -->
+    <section class="py-12 px-4 sm:px-6 max-w-5xl mx-auto w-full">
+      <div class="text-center mb-8">
+        <h2 class="font-script text-3xl sm:text-4xl text-luxury-gold">Time Spent Together</h2>
+        <p class="font-serif text-xl sm:text-2xl text-luxury-deepWine mt-1">Every Second Counted With Love</p>
+      </div>
+
+      <!-- Counter Cards Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+        <!-- Days -->
+        <div class="glass-card p-6 rounded-3xl text-center border gold-border shadow-soft-card transform hover:-translate-y-1 transition duration-300">
+          <span id="counter-days" class="block font-serif text-3xl sm:text-5xl font-bold text-luxury-wine tracking-tight">00</span>
+          <span class="text-xs uppercase tracking-widest text-luxury-muted mt-2 block font-medium">Days</span>
+        </div>
+        <!-- Hours -->
+        <div class="glass-card p-6 rounded-3xl text-center border gold-border shadow-soft-card transform hover:-translate-y-1 transition duration-300">
+          <span id="counter-hours" class="block font-serif text-3xl sm:text-5xl font-bold text-luxury-wine tracking-tight">00</span>
+          <span class="text-xs uppercase tracking-widest text-luxury-muted mt-2 block font-medium">Hours</span>
+        </div>
+        <!-- Minutes -->
+        <div class="glass-card p-6 rounded-3xl text-center border gold-border shadow-soft-card transform hover:-translate-y-1 transition duration-300">
+          <span id="counter-minutes" class="block font-serif text-3xl sm:text-5xl font-bold text-luxury-wine tracking-tight">00</span>
+          <span class="text-xs uppercase tracking-widest text-luxury-muted mt-2 block font-medium">Minutes</span>
+        </div>
+        <!-- Seconds -->
+        <div class="glass-card p-6 rounded-3xl text-center border gold-border shadow-soft-card transform hover:-translate-y-1 transition duration-300">
+          <span id="counter-seconds" class="block font-serif text-3xl sm:text-5xl font-bold text-luxury-wine tracking-tight">00</span>
+          <span class="text-xs uppercase tracking-widest text-luxury-muted mt-2 block font-medium">Seconds</span>
+        </div>
+      </div>
+      <p id="counter-start-label" class="text-center text-xs text-luxury-muted font-light mt-4 italic">
+        My life began when I saw you for the first time.
+      </p>
+    </section>
+
+    <!-- MEMORIES POLAROID GALLERY -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+      <div class="text-center mb-12">
+        <span class="font-script text-3xl sm:text-4xl text-luxury-gold">Frames of Forever</span>
+        <h2 class="font-serif text-2xl sm:text-3xl text-luxury-deepWine font-bold mt-1">Our Cherished Moments</h2>
+        <p class="text-xs sm:text-sm text-luxury-muted max-w-md mx-auto mt-2">
+          Click on any Polaroid to enlarge and relive the precious memory.
+        </p>
+      </div>
+
+      <!-- Polaroid Cards Grid: Responsive 4 columns for 16 photos -->
+      <div id="polaroid-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 pt-4">
+        <!-- Injected via JavaScript from CONFIG.galleryImages -->
+      </div>
+    </section>
+
+    <!-- SECRET LOVE LETTER SECTION -->
+    <section class="py-16 px-4 sm:px-6 max-w-3xl mx-auto w-full text-center">
+      <div class="glass-card p-8 sm:p-12 rounded-3xl border gold-border shadow-2xl relative overflow-hidden">
+        
+        <div id="letter-closed-view" class="space-y-6">
+          <div class="w-20 h-20 mx-auto rounded-full bg-luxury-blush flex items-center justify-center text-luxury-wine border border-luxury-rose">
+            <i class="fa-solid fa-envelope-open-text text-2xl text-luxury-gold"></i>
+          </div>
+          <div>
+            <h3 class="font-serif text-2xl sm:text-3xl font-semibold text-luxury-deepWine">A Confidential Note For You</h3>
+            <p class="text-sm text-luxury-muted mt-2 font-light">
+              Press the wax seal below to uncover what words fail to contain.
+            </p>
+          </div>
+          <button 
+            id="reveal-letter-btn" 
+            onclick="revealLoveLetter()"
+            class="px-8 py-3.5 rounded-full bg-gradient-to-r from-luxury-wine to-luxury-deepWine text-luxury-ivory text-xs uppercase tracking-widest font-semibold hover:shadow-gold-glow active:scale-95 transition-all duration-300 inline-flex items-center gap-2">
+            <i class="fa-solid fa-heart text-luxury-lightGold"></i>
+            <span>Break the Seal</span>
+          </button>
+        </div>
+
+        <!-- Open Letter Typewriter View -->
+        <div id="letter-open-view" class="hidden text-left space-y-4">
+          <div class="flex items-center justify-between border-b border-luxury-rose/40 pb-3">
+            <span class="font-script text-2xl sm:text-3xl text-luxury-gold">Dearest Love,</span>
+            <span class="text-xs text-luxury-muted uppercase tracking-widest">From My Heart</span>
+          </div>
+
+          <!-- Typewriter Animated Text Box -->
+          <div class="relative py-4 min-h-[160px]">
+            <p id="typewriter-content" class="font-cormorant text-lg sm:text-xl text-luxury-deepWine leading-relaxed italic"></p>
+            <span id="typewriter-cursor" class="typewriter-cursor"></span>
+          </div>
+
+          <div class="text-right pt-4 border-t border-luxury-rose/40">
+            <p class="font-script text-2xl text-luxury-wine">Forever Yours & Only Yours</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 text-center text-xs text-luxury-muted border-t border-luxury-rose/30 mt-12 bg-white/40">
+      <p class="font-light">Crafted with endless love & devotion &bull; <span class="font-serif font-medium text-luxury-wine">Together In Every Lifetime</span></p>
+    </footer>
+
+  </div>
+
+  <!-- LIGHTBOX MODAL FOR POLAROIDS -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4 transition-opacity duration-300">
+    <div class="relative max-w-2xl w-full bg-white p-4 sm:p-6 rounded-2xl shadow-2xl flex flex-col items-center">
+      <!-- Close Button -->
+      <button 
+        onclick="closeLightbox()"
+        class="absolute -top-12 right-0 sm:top-4 sm:right-4 w-10 h-10 rounded-full bg-white/90 text-luxury-deepWine flex items-center justify-center hover:bg-luxury-blush transition shadow-md">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <!-- Zoomed Image -->
+      <div class="w-full max-h-[70vh] rounded-xl overflow-hidden bg-neutral-100 flex items-center justify-center">
+        <img id="lightbox-img" src="" alt="Enlarged Memory" class="w-full h-auto max-h-[70vh] object-contain">
+      </div>
+
+      <!-- Caption & Date -->
+      <div class="mt-4 text-center">
+        <h4 id="lightbox-caption" class="font-serif text-lg sm:text-xl text-luxury-deepWine font-medium"></h4>
+        <p id="lightbox-date" class="text-xs text-luxury-muted mt-1 uppercase tracking-wider font-light"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* =========================================================================
+       CENTRAL APPLICATION CONFIGURATION
+       ========================================================================= */
+    const CONFIG = {
+      musicUrl: "music.mp3",
+      coupleNames: "Our Eternal Story",
+      startDate: new Date(), // يتم تحديثه تلقائياً بالتاريخ المدخل
+      loveLetter: "From the very first moment our eyes met, my world gently shifted into place. You showed me that home isn't simply a place, but the warmth in your voice and the kindness in your embrace. With every sunrise that passes, I fall deeper into gratitude for every quiet whisper, every laughter shared, and every dream we hold together. You are my greatest certainty, my dearest muse, and my forever sanctuary.",
+
+      galleryImages: [
+        { url: "1.jpg", caption: "👍", date: "Forever & Always", rotate: "-2deg" },
+        { url: "2.jpg", caption: "One Photo Two Moons", date: "Pure Magic", rotate: "2.3deg" },
+        { url: "3.jpg", caption: "Our Best Photo", date: "Precious Memory", rotate: "-1.8deg" },
+        { url: "4.jpg", caption: "The Second Meet", date: "Special Chapter", rotate: "1.7deg" },
+        { url: "5.jpg", caption: "With Our Tree", date: "Our Sacred Place", rotate: "-2.5deg" },
+        { url: "6.jpg", caption: "Hmmmm", date: "Sweet Moments", rotate: "2.1deg" },
+        { url: "7.jpg", caption: "Some Sun Kisses", date: "Golden Hour", rotate: "-1.5deg" },
+        { url: "8.jpg", caption: "Also With Our Tree", date: "Summer Breeze", rotate: "2.4deg" },
+        { url: "9.jpg", caption: "My Sweets Curly", date: "Sunset Glow", rotate: "-2.1deg" },
+        { url: "10.jpg", caption: "It’s Definitely From Pinterest", date: "By The Lake", rotate: "1.9deg" },
+        { url: "11.jpg", caption: "Coffee Date", date: "Peaceful Serenity", rotate: "-2.3deg" },
+        { url: "12.jpg", caption: "She Looks Just Like A Dream", date: "Radiant Beauty", rotate: "2.2deg" },
+        { url: "13.jpg", caption: "The Prettiest Girl I've Ever Seen", date: "Endless Love", rotate: "-1.6deg" },
+        { url: "14.jpg", caption: "First Us In Damascus", date: "Unforgettable Strolls", rotate: "2deg" },
+        { url: "15.jpg", caption: "Love You", date: "Warmest Moments", rotate: "-2.4deg" },
+        { url: "16.jpg", caption: "Yummyyyyyy", date: "Sweet Delights", rotate: "1.8deg" }
+      ]
+    };
+
+    // --- Passcode & Unlock Handling ---
+    function handleUnlock() {
+      const input = document.getElementById('passcode-input');
+      const errorMsg = document.getElementById('error-message');
+      const lockScreen = document.getElementById('lock-screen');
+      const mainContent = document.getElementById('main-content');
+      
+      const userValue = input.value.trim();
+
+      if (userValue.length > 0) {
+        let parsedDate = null;
+
+        // دعم صيغ التواريخ المختلفة: DD/MM/YYYY أو DD-MM-YYYY
+        const dmyRegex = /^(\d{1,2})[\/\-\.](\d{1,2})[\/\-\.](\d{4})$/;
+        const match = userValue.match(dmyRegex);
+
+        if (match) {
+          const day = parseInt(match[1], 10);
+          const month = parseInt(match[2], 10) - 1; // يبدأ فهرس الأشهر من 0
+          const year = parseInt(match[3], 10);
+          parsedDate = new Date(year, month, day);
+        } else {
+          parsedDate = new Date(userValue);
+        }
+
+        // إذا تم التعرف على التاريخ بنجاح، يتم ضبط العداد عليه
+        if (parsedDate && !isNaN(parsedDate.getTime())) {
+          CONFIG.startDate = parsedDate;
+          updateLoveCounter();
+        }
+
+        errorMsg.classList.add('opacity-0');
+        input.classList.remove('border-rose-400', 'shake-animation');
+        
+        triggerBurst(window.innerWidth / 2, window.innerHeight / 2, 45);
+
+        lockScreen.classList.add('opacity-0', 'pointer-events-none');
+        setTimeout(() => {
+          lockScreen.style.display = 'none';
+          mainContent.classList.remove('opacity-0', 'pointer-events-none');
+          mainContent.classList.add('opacity-100');
+          startRomanticMelody();
+        }, 800);
+      } else {
+        errorMsg.classList.remove('opacity-0');
+        input.classList.add('border-rose-400', 'shake-animation');
+        setTimeout(() => {
+          input.classList.remove('shake-animation');
+        }, 500);
+      }
+    }
+
+    // --- Real-Time Elapsed Love Counter ---
+    function updateLoveCounter() {
+      const now = new Date();
+      let diff = now - CONFIG.startDate;
+      if (diff < 0) diff = 0;
+
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / (3600 * 24));
+      const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      document.getElementById('counter-days').textContent = String(days).padStart(2, '0');
+      document.getElementById('counter-hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('counter-minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('counter-seconds').textContent = String(seconds).padStart(2, '0');
+    }
+    setInterval(updateLoveCounter, 1000);
+    updateLoveCounter();
+
+    // --- Render Polaroid Gallery Cards ---
+    function renderGallery() {
+      const grid = document.getElementById('polaroid-grid');
+      grid.innerHTML = '';
+
+      CONFIG.galleryImages.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'polaroid-card bg-white p-3.5 sm:p-4 rounded-sm shadow-polaroid hover:shadow-polaroid-hover cursor-pointer border border-[#F0EBE1] flex flex-col';
+        card.style.transform = `rotate(${item.rotate || '0deg'})`;
+        card.onclick = () => openLightbox(index);
+
+        card.innerHTML = `
+          <div class="relative w-full aspect-square overflow-hidden bg-neutral-100 mb-3 rounded-[2px]">
+            <img 
+              src="${item.url}" 
+              alt="${item.caption}" 
+              class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+              onerror="this.src='https://placehold.co/600x600/f8eaeb/6e2a35?text=Our+Memory'"
+            />
+          </div>
+          <div class="text-center px-1 pb-1 pt-2 flex flex-col justify-between flex-grow">
+            <p class="font-cormorant text-base sm:text-lg text-luxury-deepWine font-medium tracking-wide leading-snug">
+              ${item.caption}
+            </p>
+            <span class="text-[10px] tracking-widest uppercase text-luxury-muted font-light mt-1">
+              ${item.date}
+            </span>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // --- Lightbox Functions ---
+    function openLightbox(index) {
+      const photo = CONFIG.galleryImages[index];
+      if (!photo) return;
+
+      const modal = document.getElementById('lightbox-modal');
+      const img = document.getElementById('lightbox-img');
+      const caption = document.getElementById('lightbox-caption');
+      const date = document.getElementById('lightbox-date');
+
+      img.src = photo.url;
+      caption.textContent = photo.caption;
+      date.textContent = photo.date;
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightbox-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+    document.getElementById('lightbox-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'lightbox-modal') closeLightbox();
+    });
+
+    // --- Typewriter Effect for Secret Love Letter ---
+    let typewriterStarted = false;
+    function revealLoveLetter() {
+      const closedView = document.getElementById('letter-closed-view');
+      const openView = document.getElementById('letter-open-view');
+      const contentEl = document.getElementById('typewriter-content');
+      const cursorEl = document.getElementById('typewriter-cursor');
+
+      closedView.classList.add('hidden');
+      openView.classList.remove('hidden');
+
+      triggerBurst(window.innerWidth / 2, window.innerHeight * 0.7, 50);
+
+      if (typewriterStarted) return;
+      typewriterStarted = true;
+
+      const text = CONFIG.loveLetter;
+      let charIndex = 0;
+      contentEl.textContent = "";
+
+      function typeChar() {
+        if (charIndex < text.length) {
+          contentEl.textContent += text.charAt(charIndex);
+          charIndex++;
+          setTimeout(typeChar, 35);
+        } else {
+          cursorEl.style.display = 'none';
+        }
+      }
+      typeChar();
+    }
+
+    // --- Background Music System ---
+    const audioElement = document.getElementById('bg-audio');
+    let audioCtx = null;
+    let isMelodyPlaying = false;
+    let melodyTimer = null;
+
+    if (CONFIG.musicUrl) {
+      audioElement.src = CONFIG.musicUrl;
+    }
+
+    function initAudioContext() {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function playSoftTone(freq, duration, delay = 0, gainLevel = 0.08) {
+      if (!audioCtx) return;
+      setTimeout(() => {
+        try {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+          gain.gain.setValueAtTime(0, audioCtx.currentTime);
+          gain.gain.linearRampToValueAtTime(gainLevel, audioCtx.currentTime + 0.08);
+          gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+
+          osc.start();
+          osc.stop(audioCtx.currentTime + duration);
+        } catch (err) {}
+      }, delay);
+    }
+
+    const melodyNotes = [174.61, 220.00, 261.63, 329.63, 392.00, 440.00, 392.00, 329.63, 261.63, 220.00, 196.00, 261.63];
+    let noteStep = 0;
+
+    function playSynthesizerMelody() {
+      initAudioContext();
+      if (melodyTimer) clearInterval(melodyTimer);
+      melodyTimer = setInterval(() => {
+        if (!isMelodyPlaying) return;
+        const currentFreq = melodyNotes[noteStep % melodyNotes.length];
+        playSoftTone(currentFreq, 2.2, 0, 0.05);
+        if (noteStep % 3 === 0) playSoftTone(currentFreq * 1.5, 2.5, 80, 0.025);
+        noteStep++;
+      }, 500);
+    }
+
+    function startRomanticMelody() {
+      if (isMelodyPlaying) return;
+      isMelodyPlaying = true;
+
+      const toggleBtn = document.getElementById('music-toggle');
+      const musicIcon = document.getElementById('music-icon');
+      toggleBtn.classList.add('music-playing');
+      musicIcon.className = "fa-solid fa-volume-high text-luxury-gold text-lg";
+
+      const playPromise = audioElement.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          playSynthesizerMelody();
+        });
+      }
+    }
+
+    function stopRomanticMelody() {
+      isMelodyPlaying = false;
+      if (melodyTimer) clearInterval(melodyTimer);
+      audioElement.pause();
+
+      const toggleBtn = document.getElementById('music-toggle');
+      const musicIcon = document.getElementById('music-icon');
+      toggleBtn.classList.remove('music-playing');
+      musicIcon.className = "fa-solid fa-volume-xmark text-luxury-gold text-lg";
+    }
+
+    document.getElementById('music-toggle').addEventListener('click', () => {
+      if (isMelodyPlaying) stopRomanticMelody();
+      else startRomanticMelody();
+    });
+
+    // --- Floating Hearts Canvas ---
+    const canvas = document.getElementById('hearts-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function drawHeart(c, x, y, size, color, alpha) {
+      c.save();
+      c.globalAlpha = alpha;
+      c.fillStyle = color;
+      c.translate(x, y);
+      c.beginPath();
+      const topCurveHeight = size * 0.3;
+      c.moveTo(0, topCurveHeight);
+      c.bezierCurveTo(-size / 2, -size / 2, -size, topCurveHeight / 3, 0, size);
+      c.bezierCurveTo(size, topCurveHeight / 3, size / 2, -size / 2, 0, topCurveHeight);
+      c.closePath();
+      c.fill();
+      c.restore();
+    }
+
+    class HeartParticle {
+      constructor(isBurst = false, originX = 0, originY = 0) {
+        this.reset(isBurst, originX, originY);
+      }
+
+      reset(isBurst = false, originX = 0, originY = 0) {
+        this.isBurst = isBurst;
+        if (isBurst) {
+          this.x = originX;
+          this.y = originY;
+          const angle = Math.random() * Math.PI * 2;
+          const speed = Math.random() * 6 + 2;
+          this.vx = Math.cos(angle) * speed;
+          this.vy = Math.sin(angle) * speed;
+          this.size = Math.random() * 12 + 8;
+          this.alpha = 1;
+          this.fadeSpeed = Math.random() * 0.015 + 0.01;
+        } else {
+          this.x = Math.random() * width;
+          this.y = height + Math.random() * 100;
+          this.vx = (Math.random() - 0.5) * 0.8;
+          this.vy = -(Math.random() * 1.2 + 0.6);
+          this.size = Math.random() * 10 + 6;
+          this.alpha = Math.random() * 0.4 + 0.2;
+          this.fadeSpeed = 0;
+        }
+
+        const colors = ['#E8A598', '#F7D6D9', '#C5A059', '#E6CA85', '#6E2A35'];
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.isBurst) {
+          this.vy += 0.08;
+          this.alpha -= this.fadeSpeed;
+        } else {
+          if (this.y < -20) this.reset(false);
+        }
+      }
+
+      draw() {
+        if (this.alpha <= 0) return;
+        drawHeart(ctx, this.x, this.y, this.size, this.color, this.alpha);
+      }
+    }
+
+    for (let i = 0; i < 28; i++) {
+      particles.push(new HeartParticle(false));
+    }
+
+    function triggerBurst(x, y, count = 35) {
+      for (let i = 0; i < count; i++) {
+        particles.push(new HeartParticle(true, x, y));
+      }
+    }
+
+    function animateHearts() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.update();
+        p.draw();
+        if (p.isBurst && p.alpha <= 0) particles.splice(i, 1);
+      }
+      requestAnimationFrame(animateHearts);
+    }
+    animateHearts();
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderGallery();
+    });
+  </script>
+</body>
+</html>
